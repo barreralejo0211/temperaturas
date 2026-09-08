@@ -1,2 +1,2 @@
 # temperaturas
-aplicativo de conversión de temperaturas
+Aplicativo de conversión de temperaturas
