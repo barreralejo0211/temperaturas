@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Convertidor de temperatura entre Celsius, Fahrenheit y Kelvin. Fácil de usar, con letra grande y pensado para todas las edades." />
+  <title>🌡️ Termómetro Fácil — Convertir Celsius, Fahrenheit y Kelvin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="cabecera">
+    <div class="titulo">
+      <span class="logo" aria-hidden="true">🌡️</span>
+      <h1>Termómetro Fácil</h1>
+    </div>
+    <p class="subtitulo">Escribe una temperatura y las otras dos se convierten solas</p>
+  </header>
+
+  <main class="principal">
+    <section class="convertidor" aria-label="Conversión de temperaturas">
+      <article class="tarjeta celsius" id="tarjeta-c">
+        <label class="etiqueta" for="celsius">
+          <span class="badge" aria-hidden="true">C</span>
+          Celsius
+        </label>
+        <div class="grupo-input">
+          <input type="text" id="celsius" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Escribe aquí" aria-describedby="ayuda-c error" />
+          <span class="unidad" aria-hidden="true">°C</span>
+        </div>
+        <p class="ayuda" id="ayuda-c">La escala que usamos en casi todo el mundo.</p>
+      </article>
+
+      <article class="tarjeta fahrenheit" id="tarjeta-f">
+        <label class="etiqueta" for="fahrenheit">
+          <span class="badge" aria-hidden="true">F</span>
+          Fahrenheit
+        </label>
+        <div class="grupo-input">
+          <input type="text" id="fahrenheit" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Escribe aquí" aria-describedby="ayuda-f error" />
+          <span class="unidad" aria-hidden="true">°F</span>
+        </div>
+        <p class="ayuda" id="ayuda-f">La escala que se usa en Estados Unidos.</p>
+      </article>
+
+      <article class="tarjeta kelvin" id="tarjeta-k">
+        <label class="etiqueta" for="kelvin">
+          <span class="badge" aria-hidden="true">K</span>
+          Kelvin
+        </label>
+        <div class="grupo-input">
+          <input type="text" id="kelvin" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Escribe aquí" aria-describedby="ayuda-k error" />
+          <span class="unidad" aria-hidden="true">K</span>
+        </div>
+        <p class="ayuda" id="ayuda-k">La escala de los científicos. Nunca es negativa.</p>
+      </article>
+    </section>
+
+    <p class="error" id="error" role="alert" aria-live="assertive"></p>
+
+    <section class="ejemplos" aria-label="Ejemplos rápidos">
+      <h2>¿Quieres un ejemplo?</h2>
+      <div class="rejilla-ejemplos">
+        <button type="button" class="btn-ejemplo" data-c="20"><span class="ej-nombre">Día agradable</span><strong>20 °C</strong></button>
+        <button type="button" class="btn-ejemplo" data-c="37"><span class="ej-nombre">Cuerpo humano</span><strong>37 °C</strong></button>
+        <button type="button" class="btn-ejemplo" data-c="0"><span class="ej-nombre">El hielo se derrite</span><strong>0 °C</strong></button>
+        <button type="button" class="btn-ejemplo" data-c="-10"><span class="ej-nombre">Día muy frío</span><strong>−10 °C</strong></button>
+      </div>
+    </section>
+
+    <div class="acciones">
+      <button type="button" id="limpiar" class="btn-limpiar">Limpiar todo</button>
+      <div class="tamano" role="group" aria-label="Tamaño del texto">
+        <span class="tamano-aviso">Tamaño del texto:</span>
+        <button type="button" id="mas-pequeno" class="btn-tamano" aria-label="Reducir tamaño del texto">A−</button>
+        <button type="button" id="mas-grande" class="btn-tamano" aria-label="Aumentar tamaño del texto">A+</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Los resultados se redondean a 2 decimales. Puedes usar punto o coma para los decimales.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
