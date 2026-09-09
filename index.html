@@ -27,6 +27,7 @@
           <input type="text" id="celsius" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Escribe aquí" aria-describedby="ayuda-c error" />
           <span class="unidad" aria-hidden="true">°C</span>
         </div>
+        <button type="button" class="btn-voz" data-unidad="C" aria-label="Escuchar el resultado en voz alta">🔊 Escuchar</button>
         <p class="ayuda" id="ayuda-c">La escala que usamos en casi todo el mundo.</p>
       </article>
 
@@ -39,6 +40,7 @@
           <input type="text" id="fahrenheit" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Escribe aquí" aria-describedby="ayuda-f error" />
           <span class="unidad" aria-hidden="true">°F</span>
         </div>
+        <button type="button" class="btn-voz" data-unidad="F" aria-label="Escuchar el resultado en voz alta">🔊 Escuchar</button>
         <p class="ayuda" id="ayuda-f">La escala que se usa en Estados Unidos.</p>
       </article>
 
@@ -51,6 +53,7 @@
           <input type="text" id="kelvin" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="Escribe aquí" aria-describedby="ayuda-k error" />
           <span class="unidad" aria-hidden="true">K</span>
         </div>
+        <button type="button" class="btn-voz" data-unidad="K" aria-label="Escuchar el resultado en voz alta">🔊 Escuchar</button>
         <p class="ayuda" id="ayuda-k">La escala de los científicos. Nunca es negativa.</p>
       </article>
     </section>
@@ -69,10 +72,13 @@
 
     <div class="acciones">
       <button type="button" id="limpiar" class="btn-limpiar">Limpiar todo</button>
-      <div class="tamano" role="group" aria-label="Tamaño del texto">
+      <div class="acciones-derecha">
+        <button type="button" id="cambiar-tema" class="btn-tema" aria-label="Cambiar a modo claro">☀️ Modo claro</button>
+        <div class="tamano" role="group" aria-label="Tamaño del texto">
         <span class="tamano-aviso">Tamaño del texto:</span>
         <button type="button" id="mas-pequeno" class="btn-tamano" aria-label="Reducir tamaño del texto">A−</button>
         <button type="button" id="mas-grande" class="btn-tamano" aria-label="Aumentar tamaño del texto">A+</button>
+        </div>
       </div>
     </div>
   </main>

@@ -6,21 +6,53 @@
 
 :root {
   --fs: 20px; /* tamaño base, controlado desde app.js */
+  /* Tema oscuro (por defecto, pensado para leer con comodidad) */
   --fondo: #0d1b2a;
   --fondo-tarjeta: #14283f;
   --fondo-input: #0b1522;
   --texto: #f8f9fa;
   --texto-suave: #c9d6e3;
   --borde-suave: #2a3f5a;
+  --placeholder: #6b7f96;
+  --brillo-1: #17344f;
+  --brillo-2: #1c2f4a;
+  --btn-fondo: #223c5c;
+  --btn-borde: #2f4d73;
   --acento-c: #4fc3f7;
   --acento-f: #ffa726;
   --acento-k: #ba68c8;
+  --badge-texto: #0d1b2a;
+  --ejemplo-fuerte: var(--dorado);
   --dorado: #ffd54f;
   --error-fondo: #7a1f1f;
   --error-texto: #ffe9e9;
   --error-borde: #ef5350;
   --radio: 20px;
   --sombra-suave: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Tema claro (elegido con el botón ☀️ / 🌙) */
+html[data-tema="claro"] {
+  --fondo: #eef3f9;
+  --fondo-tarjeta: #ffffff;
+  --fondo-input: #ffffff;
+  --texto: #17222f;
+  --texto-suave: #3c4f63;
+  --borde-suave: #c2cedd;
+  --placeholder: #75879a;
+  --brillo-1: #d5e4f4;
+  --brillo-2: #c9d9ec;
+  --btn-fondo: #e2ebf5;
+  --btn-borde: #b7c7d9;
+  --acento-c: #0277bd;
+  --acento-f: #ef6c00;
+  --acento-k: #8e24aa;
+  --badge-texto: #ffffff;
+  --ejemplo-fuerte: #9a6a00;
+  --error-fondo: #fdecec;
+  --error-texto: #8f1d1d;
+  --error-borde: #d32f2f;
+  --sombra-suave: 0 6px 18px rgba(23, 34, 47, 0.12);
 }
 
 * {
@@ -38,14 +70,14 @@ body {
   flex-direction: column;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background:
-    radial-gradient(1100px 700px at 15% -10%, #17344f 0%, rgba(13, 27, 42, 0) 60%),
-    radial-gradient(900px 600px at 100% 0%, #1c2f4a 0%, rgba(13, 27, 42, 0) 55%),
+    radial-gradient(1100px 700px at 15% -10%, var(--brillo-1) 0%, rgba(13, 27, 42, 0) 60%),
+    radial-gradient(900px 600px at 100% 0%, var(--brillo-2) 0%, rgba(13, 27, 42, 0) 55%),
     var(--fondo);
   color: var(--texto);
 }
 
 :focus-visible {
-  outline: 3px solid var(--dorado);
+  outline: 3px solid var(--ejemplo-fuerte);
   outline-offset: 3px;
 }
 
@@ -135,7 +167,7 @@ body {
   display: grid;
   place-items: center;
   background: var(--accento);
-  color: #0d1b2a;
+  color: var(--badge-texto);
   font-size: 1.1rem;
   font-weight: 900;
   border-radius: 50%;
@@ -163,7 +195,7 @@ body {
 }
 
 .grupo-input input::placeholder {
-  color: #6b7f96;
+  color: var(--placeholder);
   font-weight: 400;
   font-size: 1.2rem;
 }
@@ -233,7 +265,7 @@ body {
 }
 
 .btn-ejemplo:hover {
-  border-color: var(--dorado);
+  border-color: var(--ejemplo-fuerte);
   transform: scale(1.03);
 }
 
@@ -247,7 +279,7 @@ body {
   display: block;
   margin-top: 0.35rem;
   font-size: 1.6rem;
-  color: var(--dorado);
+  color: var(--ejemplo-fuerte);
 }
 
 /* ===== Acciones (limpiar y tamaño del texto) ===== */
@@ -262,8 +294,8 @@ body {
 }
 
 .btn-limpiar {
-  background: #223c5c;
-  border: 2px solid #2f4d73;
+  background: var(--btn-fondo);
+  border: 2px solid var(--btn-borde);
   border-radius: 14px;
   color: var(--texto);
   font-size: 1.15rem;
@@ -275,7 +307,58 @@ body {
 
 .btn-limpiar:hover {
   border-color: var(--error-borde);
-  color: #ffcdd2;
+  color: var(--error-texto);
+}
+
+.acciones-derecha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-tema {
+  background: var(--btn-fondo);
+  border: 2px solid var(--btn-borde);
+  border-radius: 14px;
+  color: var(--texto);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.85rem 1.3rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.btn-tema:hover {
+  border-color: var(--ejemplo-fuerte);
+}
+
+.btn-voz {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--accento);
+  border-radius: 14px;
+  color: var(--texto);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-voz:hover:not(:disabled) {
+  border-color: var(--ejemplo-fuerte);
+}
+
+.btn-voz.escuchando {
+  background: var(--accento);
+  color: var(--badge-texto);
+  border-color: var(--accento);
+}
+
+.btn-voz:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .tamano {
@@ -293,8 +376,8 @@ body {
   width: 3.4rem;
   height: 3.4rem;
   border-radius: 50%;
-  background: #223c5c;
-  border: 2px solid #2f4d73;
+  background: var(--btn-fondo);
+  border: 2px solid var(--btn-borde);
   color: var(--texto);
   font-size: 1.2rem;
   font-weight: 800;
@@ -303,7 +386,7 @@ body {
 }
 
 .btn-tamano:hover:not(:disabled) {
-  border-color: var(--dorado);
+  border-color: var(--ejemplo-fuerte);
 }
 
 .btn-tamano:disabled {

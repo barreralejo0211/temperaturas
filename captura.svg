@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="titulo">
+  <title id="titulo">Vista previa esquemática de Termómetro Fácil</title>
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16324f"/>
+      <stop offset="100%" stop-color="#0d1b2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="780" fill="url(#fondo)"/>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <!-- Cabecera -->
+    <text x="600" y="92" text-anchor="middle" font-size="46" font-weight="bold" fill="#f8f9fa">🌡️ Termómetro Fácil</text>
+    <text x="600" y="140" text-anchor="middle" font-size="25" fill="#c9d6e3">Escribe una temperatura y las otras dos se convierten solas</text>
+
+    <!-- Tarjeta Celsius -->
+    <rect x="60" y="190" width="340" height="300" rx="20" fill="#14283f"/>
+    <rect x="60" y="190" width="12" height="300" rx="6" fill="#4fc3f7"/>
+    <circle cx="108" cy="238" r="22" fill="#4fc3f7"/>
+    <text x="108" y="246" text-anchor="middle" font-size="23" font-weight="900" fill="#0d1b2a">C</text>
+    <text x="142" y="246" font-size="26" font-weight="bold" fill="#f8f9fa">Celsius</text>
+    <rect x="85" y="272" width="250" height="62" rx="12" fill="#0b1522" stroke="#2a3f5a" stroke-width="3"/>
+    <text x="107" y="314" font-size="33" font-weight="bold" fill="#f8f9fa">20</text>
+    <text x="318" y="314" text-anchor="end" font-size="30" font-weight="800" fill="#4fc3f7">°C</text>
+    <rect x="85" y="354" width="290" height="52" rx="12" fill="#1a2f49" stroke="#4fc3f7" stroke-width="3"/>
+    <text x="230" y="388" text-anchor="middle" font-size="23" fill="#f8f9fa">🔊 Escuchar</text>
+    <text x="85" y="456" font-size="19" fill="#c9d6e3">La escala que usamos en casi todo el mundo.</text>
+
+    <!-- Tarjeta Fahrenheit -->
+    <rect x="430" y="190" width="340" height="300" rx="20" fill="#14283f"/>
+    <rect x="430" y="190" width="12" height="300" rx="6" fill="#ffa726"/>
+    <circle cx="478" cy="238" r="22" fill="#ffa726"/>
+    <text x="478" y="246" text-anchor="middle" font-size="23" font-weight="900" fill="#0d1b2a">F</text>
+    <text x="512" y="246" font-size="26" font-weight="bold" fill="#f8f9fa">Fahrenheit</text>
+    <rect x="455" y="272" width="250" height="62" rx="12" fill="#0b1522" stroke="#2a3f5a" stroke-width="3"/>
+    <text x="477" y="314" font-size="33" font-weight="bold" fill="#f8f9fa">68</text>
+    <text x="688" y="314" text-anchor="end" font-size="30" font-weight="800" fill="#ffa726">°F</text>
+    <rect x="455" y="354" width="290" height="52" rx="12" fill="#1a2f49" stroke="#ffa726" stroke-width="3"/>
+    <text x="600" y="388" text-anchor="middle" font-size="23" fill="#f8f9fa">🔊 Escuchar</text>
+    <text x="455" y="456" font-size="19" fill="#c9d6e3">La escala que se usa en Estados Unidos.</text>
+
+    <!-- Tarjeta Kelvin -->
+    <rect x="800" y="190" width="340" height="300" rx="20" fill="#14283f"/>
+    <rect x="800" y="190" width="12" height="300" rx="6" fill="#ba68c8"/>
+    <circle cx="848" cy="238" r="22" fill="#ba68c8"/>
+    <text x="848" y="246" text-anchor="middle" font-size="23" font-weight="900" fill="#0d1b2a">K</text>
+    <text x="882" y="246" font-size="26" font-weight="bold" fill="#f8f9fa">Kelvin</text>
+    <rect x="825" y="272" width="250" height="62" rx="12" fill="#0b1522" stroke="#2a3f5a" stroke-width="3"/>
+    <text x="847" y="314" font-size="31" font-weight="bold" fill="#f8f9fa">293.15</text>
+    <text x="1058" y="314" text-anchor="end" font-size="30" font-weight="800" fill="#ba68c8">K</text>
+    <rect x="825" y="354" width="290" height="52" rx="12" fill="#1a2f49" stroke="#ba68c8" stroke-width="3"/>
+    <text x="970" y="388" text-anchor="middle" font-size="23" fill="#f8f9fa">🔊 Escuchar</text>
+    <text x="825" y="456" font-size="19" fill="#c9d6e3">La escala de los científicos. Nunca es negativa.</text>
+
+    <!-- Ejemplos -->
+    <text x="60" y="545" font-size="26" font-weight="bold" fill="#f8f9fa">¿Quieres un ejemplo?</text>
+    <rect x="60" y="565" width="250" height="95" rx="16" fill="#14283f" stroke="#2a3f5a" stroke-width="3"/>
+    <text x="185" y="603" text-anchor="middle" font-size="20" fill="#c9d6e3">Día agradable</text>
+    <text x="185" y="641" text-anchor="middle" font-size="29" font-weight="bold" fill="#ffd54f">20 °C</text>
+    <rect x="330" y="565" width="250" height="95" rx="16" fill="#14283f" stroke="#2a3f5a" stroke-width="3"/>
+    <text x="455" y="603" text-anchor="middle" font-size="20" fill="#c9d6e3">Cuerpo humano</text>
+    <text x="455" y="641" text-anchor="middle" font-size="29" font-weight="bold" fill="#ffd54f">37 °C</text>
+    <rect x="600" y="565" width="250" height="95" rx="16" fill="#14283f" stroke="#2a3f5a" stroke-width="3"/>
+    <text x="725" y="603" text-anchor="middle" font-size="20" fill="#c9d6e3">El hielo se derrite</text>
+    <text x="725" y="641" text-anchor="middle" font-size="29" font-weight="bold" fill="#ffd54f">0 °C</text>
+    <rect x="870" y="565" width="250" height="95" rx="16" fill="#14283f" stroke="#2a3f5a" stroke-width="3"/>
+    <text x="995" y="603" text-anchor="middle" font-size="20" fill="#c9d6e3">Día muy frío</text>
+    <text x="995" y="641" text-anchor="middle" font-size="29" font-weight="bold" fill="#ffd54f">−10 °C</text>
+
+    <!-- Acciones -->
+    <rect x="60" y="692" width="230" height="56" rx="14" fill="#223c5c" stroke="#2f4d73" stroke-width="3"/>
+    <text x="175" y="727" text-anchor="middle" font-size="23" font-weight="bold" fill="#f8f9fa">Limpiar todo</text>
+    <rect x="700" y="692" width="200" height="56" rx="14" fill="#223c5c" stroke="#2f4d73" stroke-width="3"/>
+    <text x="800" y="727" text-anchor="middle" font-size="22" fill="#f8f9fa">☀️ Modo claro</text>
+    <text x="945" y="727" font-size="20" fill="#c9d6e3">Texto:</text>
+    <circle cx="1018" cy="720" r="27" fill="#223c5c" stroke="#2f4d73" stroke-width="3"/>
+    <text x="1018" y="728" text-anchor="middle" font-size="22" font-weight="800" fill="#f8f9fa">A−</text>
+    <circle cx="1084" cy="720" r="27" fill="#223c5c" stroke="#2f4d73" stroke-width="3"/>
+    <text x="1084" y="728" text-anchor="middle" font-size="22" font-weight="800" fill="#f8f9fa">A+</text>
+  </g>
+</svg>

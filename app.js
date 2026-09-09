@@ -101,6 +101,11 @@ function convertir(origen, valor) {
 function alEscribir(unidad) {
   if (actualizando) return;
 
+  if (hablando) {
+    detenerVoz();
+    resetBotonVoz();
+  }
+
   const valor = leerNumero(unidad);
 
   if (valor === null) {
@@ -141,6 +146,10 @@ Object.keys(entradas).forEach((unidad) => {
 
 document.querySelectorAll('.btn-ejemplo').forEach((boton) => {
   boton.addEventListener('click', () => {
+    if (hablando) {
+      detenerVoz();
+      resetBotonVoz();
+    }
     const celsius = Number(boton.dataset.c);
     entradas.C.value = String(celsius);
     ocultarError();
@@ -153,6 +162,10 @@ document.querySelectorAll('.btn-ejemplo').forEach((boton) => {
 /* ---------- Botón limpiar ---------- */
 
 botonLimpiar.addEventListener('click', () => {
+  if (hablando) {
+    detenerVoz();
+    resetBotonVoz();
+  }
   Object.values(entradas).forEach((input) => {
     input.value = '';
   });
@@ -203,3 +216,132 @@ btnMasGrande.addEventListener('click', () => {
 });
 
 aplicarTamano();
+
+/* ---------- Leer en voz alta (botón 🔊 Escuchar) ---------- */
+
+const soporteVoz = 'speechSynthesis' in window;
+const botonesVoz = document.querySelectorAll('.btn-voz');
+let hablando = false;
+
+function conseguirVozEspanol() {
+  const voces = window.speechSynthesis.getVoices();
+  return voces.find((v) => /^es/i.test(v.lang)) || null;
+}
+
+function detenerVoz() {
+  if (soporteVoz) window.speechSynthesis.cancel();
+}
+
+function resetBotonVoz() {
+  botonesVoz.forEach((b) => {
+    b.classList.remove('escuchando');
+    b.textContent = '🔊 Escuchar';
+    b.setAttribute('aria-label', 'Escuchar el resultado en voz alta');
+  });
+}
+
+function textoParaLeer(unidad) {
+  const valor = entradas[unidad].value.trim();
+  if (valor === '') {
+    return 'No hay ninguna temperatura escrita. Escribe un número y vuelve a pulsar escuchar.';
+  }
+
+  const nombres = { C: 'Celsius', F: 'Fahrenheit', K: 'Kelvin' };
+  const equivalencias = [
+    ['C', 'Celsius'],
+    ['F', 'Fahrenheit'],
+    ['K', 'Kelvin'],
+  ].filter(([u]) => u !== unidad && entradas[u].value.trim() !== '');
+
+  if (equivalencias.length === 0) {
+    return 'Esa temperatura no se puede convertir. Pulsa limpiar y escribe otra.';
+  }
+
+  const frases = [`El resultado es: ${valor} grados ${nombres[unidad]} equivalen a`];
+  equivalencias.forEach(([u, nombre], i) => {
+    frases.push(`${entradas[u].value.trim()} grados ${nombre}`);
+    if (i < equivalencias.length - 1) frases.push('y a');
+  });
+  frases.push('.');
+  return frases.join(' ');
+}
+
+if (soporteVoz) {
+  /* Algunos navegadores cargan las voces con retraso */
+  window.speechSynthesis.onvoiceschanged = conseguirVozEspanol;
+} else {
+  botonesVoz.forEach((b) => {
+    b.disabled = true;
+    b.title = 'Tu navegador no soporta la lectura en voz alta';
+  });
+}
+
+botonesVoz.forEach((boton) => {
+  boton.addEventListener('click', () => {
+    if (!soporteVoz) return;
+
+    if (hablando) {
+      detenerVoz();
+      resetBotonVoz();
+      hablando = false;
+      return;
+    }
+
+    detenerVoz();
+    resetBotonVoz();
+
+    const mensaje = new SpeechSynthesisUtterance(textoParaLeer(boton.dataset.unidad));
+    mensaje.lang = 'es-ES';
+    mensaje.rate = 0.9; /* un poco más lento: más fácil de seguir */
+
+    const voz = conseguirVozEspanol();
+    if (voz) mensaje.voice = voz;
+
+    mensaje.onstart = () => {
+      hablando = true;
+      boton.classList.add('escuchando');
+      boton.textContent = '⏹ Parar';
+      boton.setAttribute('aria-label', 'Parar la lectura');
+    };
+    mensaje.onend = () => {
+      hablando = false;
+      resetBotonVoz();
+    };
+    mensaje.onerror = () => {
+      hablando = false;
+      resetBotonVoz();
+    };
+
+    window.speechSynthesis.speak(mensaje);
+  });
+});
+
+/* ---------- Modo claro / oscuro (botón ☀️ / 🌙) ---------- */
+
+const botonTema = document.getElementById('cambiar-tema');
+const CLAVE_TEMA = 'convertidor-tema';
+let temaClaro = false;
+
+try {
+  temaClaro = localStorage.getItem(CLAVE_TEMA) === 'claro';
+} catch (e) {
+  /* sin almacenamiento: se usa el tema oscuro por defecto */
+}
+
+function aplicarTema() {
+  document.documentElement.dataset.tema = temaClaro ? 'claro' : 'oscuro';
+  botonTema.textContent = temaClaro ? '🌙 Modo oscuro' : '☀️ Modo claro';
+  botonTema.setAttribute('aria-label', temaClaro ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro');
+  try {
+    localStorage.setItem(CLAVE_TEMA, temaClaro ? 'claro' : 'oscuro');
+  } catch (e) {
+    /* se ignora: el tema se aplica igualmente en esta sesión */
+  }
+}
+
+botonTema.addEventListener('click', () => {
+  temaClaro = !temaClaro;
+  aplicarTema();
+});
+
+aplicarTema();
