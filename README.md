@@ -39,6 +39,16 @@ el enlace de arriba por `captura.png`.*
 
 ---
 
+## 🔧 Solución de problemas
+
+| Problema | Por qué pasa | Qué hacer |
+|---|---|---|
+| El botón **🔊 Escuchar** no suena | El navegador no ha cargado las voces aún, no tiene voces instaladas en el sistema o no soporta voz | Prueba con **Chrome o Edge**. En Windows, ve a *Configuración → Voz* y comprueba que haya una voz en español instalada |
+| El **modo claro** no cambia al pulsar | El navegador guardó una versión antigua de la página | Pulsa **Ctrl + F5** (o *Ctrl + Shift + R*) para recargar sin usar la caché |
+| La página se ve rara tras una actualización | Quedó una copia antigua de `app.js` o `style.css` en la caché | Recarga con **Ctrl + F5** |
+
+---
+
 ## 🧠 Cómo funciona (esquema)
 
 ```
